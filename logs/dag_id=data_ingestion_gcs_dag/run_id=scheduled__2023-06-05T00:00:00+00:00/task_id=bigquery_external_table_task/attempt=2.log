@@ -1,0 +1,54 @@
+[2023-06-06T20:15:46.133+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.bigquery_external_table_task scheduled__2023-06-05T00:00:00+00:00 [queued]>
+[2023-06-06T20:15:46.139+0000] {taskinstance.py:1165} INFO - Dependencies all met for <TaskInstance: data_ingestion_gcs_dag.bigquery_external_table_task scheduled__2023-06-05T00:00:00+00:00 [queued]>
+[2023-06-06T20:15:46.139+0000] {taskinstance.py:1362} INFO - 
+--------------------------------------------------------------------------------
+[2023-06-06T20:15:46.140+0000] {taskinstance.py:1363} INFO - Starting attempt 2 of 2
+[2023-06-06T20:15:46.140+0000] {taskinstance.py:1364} INFO - 
+--------------------------------------------------------------------------------
+[2023-06-06T20:15:46.147+0000] {taskinstance.py:1383} INFO - Executing <Task(BigQueryCreateExternalTableOperator): bigquery_external_table_task> on 2023-06-05 00:00:00+00:00
+[2023-06-06T20:15:46.152+0000] {standard_task_runner.py:54} INFO - Started process 467 to run task
+[2023-06-06T20:15:46.155+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'data_ingestion_gcs_dag', 'bigquery_external_table_task', 'scheduled__2023-06-05T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/data_ingestion_gcs.py', '--cfg-path', '/tmp/tmpb1yd8tmd']
+[2023-06-06T20:15:46.157+0000] {standard_task_runner.py:83} INFO - Job 7: Subtask bigquery_external_table_task
+[2023-06-06T20:15:46.158+0000] {dagbag.py:525} INFO - Filling up the DagBag from /opt/***/dags/data_ingestion_gcs.py
+[2023-06-06T20:15:46.172+0000] {data_ingestion_gcs.py:24} INFO - Dataset file is yellow_tripdata_2021-01.csv.gz, url is https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz, local_home is /opt/***, parquet file is yellow_tripdata_2021-01.parquet
+[2023-06-06T20:15:46.173+0000] {data_ingestion_gcs.py:32} INFO - dtc_data_lake_dtc-dezc-001 is the bucket,  dtc-dezc is the project name, dtc-dezc-001 is the project id, trips_data_all is the bigquery dataset.
+[2023-06-06T20:15:46.185+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/configuration.py:545: DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+  option = self._get_environment_variables(deprecated_key, deprecated_section, key, section)
+
+[2023-06-06T20:15:46.223+0000] {task_command.py:384} INFO - Running <TaskInstance: data_ingestion_gcs_dag.bigquery_external_table_task scheduled__2023-06-05T00:00:00+00:00 [running]> on host 1d8c795fd30d
+[2023-06-06T20:15:46.265+0000] {taskinstance.py:1592} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=admin
+AIRFLOW_CTX_DAG_ID=data_ingestion_gcs_dag
+AIRFLOW_CTX_TASK_ID=bigquery_external_table_task
+AIRFLOW_CTX_EXECUTION_DATE=2023-06-05T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-06-05T00:00:00+00:00
+[2023-06-06T20:15:46.267+0000] {crypto.py:84} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-06-06T20:15:46.268+0000] {base.py:71} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-06-06T20:15:46.269+0000] {taskinstance.py:1851} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 1127, in execute
+    table_resource=self.table_resource,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/common/hooks/base_google.py", line 456, in inner_wrapper
+    kwargs['project_id'] = self.project_id
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/common/hooks/base_google.py", line 341, in project_id
+    _, project_id = self._get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/common/hooks/base_google.py", line 255, in _get_credentials_and_project_id
+    delegates=delegates,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 332, in get_credentials_and_project_id
+    return _CredentialProvider(*args, **kwargs).get_credentials_and_project()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 231, in get_credentials_and_project
+    credentials, project_id = self._get_credentials_using_key_path()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/utils/credentials_provider.py", line 281, in _get_credentials_using_key_path
+    self.key_path, scopes=self.scopes
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/oauth2/service_account.py", line 239, in from_service_account_file
+    filename, require=["client_email", "token_uri"]
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_service_account_info.py", line 81, in from_filename
+    return data, from_dict(data, require=require, use_rsa_signer=use_rsa_signer)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_service_account_info.py", line 53, in from_dict
+    "fields {}.".format(", ".join(missing))
+ValueError: Service account info was not in the expected format, missing fields token_uri, client_email.
+[2023-06-06T20:15:46.280+0000] {taskinstance.py:1406} INFO - Marking task as FAILED. dag_id=data_ingestion_gcs_dag, task_id=bigquery_external_table_task, execution_date=20230605T000000, start_date=20230606T201546, end_date=20230606T201546
+[2023-06-06T20:15:46.292+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 7 for task bigquery_external_table_task (Service account info was not in the expected format, missing fields token_uri, client_email.; 467)
+[2023-06-06T20:15:46.327+0000] {local_task_job.py:164} INFO - Task exited with return code 1
+[2023-06-06T20:15:46.342+0000] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
